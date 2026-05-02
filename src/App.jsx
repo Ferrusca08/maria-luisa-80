@@ -90,7 +90,7 @@ function App() {
       <audio 
         ref={audioRef} 
         loop 
-        src="https://archive.org/download/ChuckBerryJohnnyB.Goode/Chuck%20Berry%20-%20Johnny%20B.%20Goode.mp3" 
+        src={`${import.meta.env.BASE_URL}Lunares_y_cuero.mp3`} 
       />
 
       <div className="audio-hint">
