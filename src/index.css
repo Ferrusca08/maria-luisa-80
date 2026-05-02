@@ -129,8 +129,8 @@ section.glass-card {
 /* Central Element: Turntable */
 .turntable-container {
   position: relative;
-  width: 300px;
-  height: 260px;
+  width: 400px;
+  height: 350px;
   background: var(--vintage-mint);
   border-radius: 20px;
   border: 4px solid #fff;
@@ -212,8 +212,8 @@ section.glass-card {
 }
 
 .turntable-platter {
-  width: 220px;
-  height: 220px;
+  width: 300px;
+  height: 300px;
   background: #222;
   border-radius: 50%;
   position: relative;
@@ -242,8 +242,8 @@ section.glass-card {
 }
 
 .vinyl-label {
-  width: 90px;
-  height: 90px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background-image: url('/abuela.jpg');
   background-size: cover;
@@ -288,10 +288,10 @@ section.glass-card {
 
 .tonearm {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 30px;
+  right: 30px;
   width: 8px;
-  height: 120px;
+  height: 160px;
   background: linear-gradient(90deg, #ccc, #fff, #999);
   border-radius: 4px;
   transform-origin: top center;
@@ -594,8 +594,8 @@ section.glass-card {
   }
   
   .turntable-container {
-    transform: scale(0.85);
-    margin-bottom: 1rem;
+    transform: scale(0.7);
+    margin-bottom: 0rem;
   }
   
   .rsvp-form {

@@ -120,14 +120,7 @@ function App() {
               <div className={`vinyl-grooves ${!isPlaying ? 'paused' : ''}`}></div>
               <div className="vinyl-label"></div>
               <div className="vinyl-hole"></div>
-              <div className={`vinyl-label-text ${!isPlaying ? 'paused' : ''}`}>
-                <svg viewBox="0 0 100 100">
-                  <path id="curve" d="M 12 50 A 38 38 0 1 1 88 50 A 38 38 0 1 1 12 50" fill="transparent" />
-                  <text width="100%" fill="#fff" fontSize="8" fontWeight="bold" letterSpacing="0.5">
-                    <textPath href="#curve" startOffset="0%"> MARIA LUISA'S ROCKIN' 80TH BIRTHDAY MIX </textPath>
-                  </text>
-                </svg>
-              </div>
+
             </div>
             
             <div className={`tonearm ${!isPlaying ? 'paused' : ''}`}>
