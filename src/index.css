@@ -631,8 +631,11 @@ section.glass-card {
   }
   
   .turntable-container {
-    transform: scale(0.7);
-    margin-bottom: 0rem;
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+    transform-origin: center center;
+    margin-bottom: -40px;
+    margin-top: -20px;
   }
   
   .rsvp-form {
