@@ -29,11 +29,11 @@ function App() {
     e.submitter?.blur(); // Removes focus from button
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Configura tu URL de Google Apps Script aquí
     // Consulta el artefacto o las instrucciones para generarla
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYOUR_SCRIPT_ID_HERE/exec';
-    
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyapuaRXY2dhis0p9mG2UlrkQK1Ge2Tn3ezALERpkFsivp1wcV6NK8nNuz4TCTUE_d6A/exec';
+
     try {
       // Intento de enviar a Google Sheets
       await fetch(SCRIPT_URL, {
@@ -44,7 +44,7 @@ function App() {
         },
         body: JSON.stringify(formData)
       });
-      
+
       // Lanzar confeti!
       confetti({
         particleCount: 150,
@@ -52,7 +52,7 @@ function App() {
         origin: { y: 0.6 },
         colors: ['#ff0055', '#00f3ff', '#ffe600']
       });
-      
+
       setIsSubmitted(true);
     } catch (error) {
       console.error('Error enviando datos:', error);
@@ -71,12 +71,12 @@ function App() {
   return (
     <>
       <div className="checkered-floor"></div>
-      
+
       {/* Audio Element */}
-      <audio 
-        ref={audioRef} 
-        loop 
-        src="https://archive.org/download/ChuckBerryJohnnyB.Goode/Chuck%20Berry%20-%20Johnny%20B.%20Goode.mp3" 
+      <audio
+        ref={audioRef}
+        loop
+        src="https://archive.org/download/ChuckBerryJohnnyB.Goode/Chuck%20Berry%20-%20Johnny%20B.%20Goode.mp3"
       />
 
       <button className="audio-control" onClick={toggleAudio} aria-label="Toggle Music">
@@ -84,11 +84,11 @@ function App() {
       </button>
 
       <div className="app-container">
-        
+
         <header>
           <h1 className="title">¡Maria Luisa!</h1>
           <h2 className="subtitle">Cumple 80 Años</h2>
-          
+
           <div className="hero-image-container">
             <div className={`vinyl-record ${!isPlaying ? 'paused' : ''}`}></div>
             <img src="/abuela.jpg" alt="Maria Luisa" className="hero-image" />
@@ -113,7 +113,7 @@ function App() {
                 <span className="detail-title">Lugar</span>
                 <p>Salones Merequetengue</p>
                 <p style={{ fontSize: '0.8rem', opacity: 0.8, marginTop: '0.5rem' }}>
-                  Paseo de las Lomas #70<br/>Parque Residencial Coacalco 2da Sección<br/>Coacalco, Estado de México
+                  Paseo de las Lomas #70<br />Parque Residencial Coacalco 2da Sección<br />Coacalco, Estado de México
                 </p>
               </div>
             </div>
@@ -123,7 +123,7 @@ function App() {
             <h2 className="subtitle" style={{ color: 'var(--neon-pink)', marginBottom: '1.5rem' }}>
               Confirmación de Asistencia
             </h2>
-            
+
             {isSubmitted ? (
               <div style={{ textAlign: 'center', padding: '2rem 0' }}>
                 <CheckCircle2 color="var(--neon-yellow)" size={60} style={{ margin: '0 auto 1rem' }} />
@@ -134,22 +134,22 @@ function App() {
               <form className="rsvp-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre Completo</label>
-                  <input 
-                    type="text" 
-                    id="nombre" 
-                    name="nombre" 
-                    required 
+                  <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
                     placeholder="Tu nombre aquí..."
                     value={formData.nombre}
                     onChange={handleInputChange}
                   />
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="asistencia">¿Asistirás?</label>
-                  <select 
-                    id="asistencia" 
-                    name="asistencia" 
+                  <select
+                    id="asistencia"
+                    name="asistencia"
                     value={formData.asistencia}
                     onChange={handleInputChange}
                   >
@@ -157,13 +157,13 @@ function App() {
                     <option value="no">No podré asistir :(</option>
                   </select>
                 </div>
-                
+
                 <div className="form-group">
                   <label htmlFor="mensaje">Mensaje para Maria Luisa (Opcional)</label>
-                  <input 
-                    type="text" 
-                    id="mensaje" 
-                    name="mensaje" 
+                  <input
+                    type="text"
+                    id="mensaje"
+                    name="mensaje"
                     placeholder="Escribe tus buenos deseos..."
                     value={formData.mensaje}
                     onChange={handleInputChange}
