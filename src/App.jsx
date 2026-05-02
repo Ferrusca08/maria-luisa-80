@@ -10,6 +10,36 @@ function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const audioRef = useRef(null);
 
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const targetDate = new Date("2026-05-16T15:00:00-06:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+        });
+      }
+    };
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+
   const enterParty = () => {
     setHasEntered(true);
     // Try to play audio immediately after user interaction
@@ -133,6 +163,29 @@ function App() {
           <p className="section-text">
             Prepárate para viajar en el tiempo. Celebraremos 80 años de vida, amor, familia y por supuesto... ¡mucho Rock & Roll! Nos encantaría que nos acompañes en este día tan especial para Maria Luisa.
           </p>
+        </section>
+
+        {/* Section 1.5: Countdown */}
+        <section className="glass-card" style={{ padding: '2rem', textAlign: 'center' }}>
+          <h2 className="section-title" style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: 'var(--vintage-pink)' }}>La fiesta comienza en:</h2>
+          <div className="countdown-container">
+            <div className="countdown-box">
+              <span className="countdown-number">{timeLeft.days}</span>
+              <span className="countdown-label">Días</span>
+            </div>
+            <div className="countdown-box">
+              <span className="countdown-number">{timeLeft.hours}</span>
+              <span className="countdown-label">Hrs</span>
+            </div>
+            <div className="countdown-box">
+              <span className="countdown-number">{timeLeft.minutes}</span>
+              <span className="countdown-label">Min</span>
+            </div>
+            <div className="countdown-box">
+              <span className="countdown-number">{timeLeft.seconds}</span>
+              <span className="countdown-label">Seg</span>
+            </div>
+          </div>
         </section>
 
         {/* Section 2: Detalles del Evento */}
