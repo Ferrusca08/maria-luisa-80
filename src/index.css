@@ -5,8 +5,8 @@
   --vintage-cyan: #00ced1;
   --vintage-cream: #fffaf0;
   --vintage-text: #3e2723;
-  --glass-bg: rgba(255, 250, 240, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-bg: rgba(255, 250, 240, 0.9);
+  --glass-border: rgba(255, 255, 255, 0.8);
 }
 
 * {
@@ -45,18 +45,19 @@ body::after {
 .app-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 3rem; /* Separates sections clearly */
 }
 
-/* Typography - Vintage Print Style */
+/* Typography - Symmetric Vintage Print Style */
 h1.title {
   font-family: 'Bungee Shade', cursive;
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   text-align: center;
   color: var(--vintage-yellow);
   text-shadow: 
@@ -64,40 +65,85 @@ h1.title {
     6px 6px 0px var(--vintage-pink);
   margin-bottom: 0.5rem;
   line-height: 1.1;
-  transform: rotate(-2deg);
+  /* Removed rotation for symmetry */
 }
 
 h2.subtitle {
   font-family: 'Rye', cursive;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
   text-align: center;
   color: var(--vintage-text);
-  margin-bottom: 3rem;
-  transform: rotate(-1deg);
+  margin-bottom: 2rem;
   background: var(--vintage-cream);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   border: 2px dashed var(--vintage-pink);
   display: inline-block;
   box-shadow: 4px 4px 0px var(--vintage-cyan);
+  /* Removed rotation for symmetry */
+}
+
+.section-title {
+  font-family: 'Rye', cursive;
+  font-size: 2rem;
+  color: var(--vintage-cyan);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Sections */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+section.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 4px solid var(--vintage-cream);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.3),
+    inset 0 0 0 4px var(--vintage-pink);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* Add subtle texture to cards */
+  background-image: radial-gradient(var(--vintage-cream) 15%, transparent 16%);
+  background-size: 20px 20px;
 }
 
 /* Central Element: Turntable */
 .turntable-container {
   position: relative;
-  width: 320px;
-  height: 280px;
+  width: 300px;
+  height: 260px;
   background: var(--vintage-mint);
   border-radius: 20px;
   border: 4px solid #fff;
   box-shadow: 
     10px 10px 0px rgba(0,0,0,0.2),
     inset 0 0 20px rgba(0,0,0,0.1);
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   perspective: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Suspended Vintage Microphone */
@@ -123,7 +169,6 @@ h2.subtitle {
   position: relative;
 }
 
-/* Coil effect */
 .mic-cable::before {
   content: '';
   position: absolute;
@@ -147,7 +192,6 @@ h2.subtitle {
   box-shadow: 0 10px 15px rgba(0,0,0,0.3);
 }
 
-/* Mic grille */
 .mic-head::after {
   content: '';
   position: absolute;
@@ -168,8 +212,8 @@ h2.subtitle {
 }
 
 .turntable-platter {
-  width: 240px;
-  height: 240px;
+  width: 220px;
+  height: 220px;
   background: #222;
   border-radius: 50%;
   position: relative;
@@ -197,10 +241,9 @@ h2.subtitle {
   animation-play-state: paused;
 }
 
-/* The label is grandma's photo */
 .vinyl-label {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background-image: url('/abuela.jpg');
   background-size: cover;
@@ -216,8 +259,8 @@ h2.subtitle {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: #eee;
   border-radius: 50%;
   border: 1px solid #999;
@@ -236,22 +279,21 @@ h2.subtitle {
   animation-play-state: paused;
 }
 .vinyl-label-text svg {
-  width: 140px;
-  height: 140px;
+  width: 130px;
+  height: 130px;
   position: absolute;
   top: -20px;
   left: -20px;
 }
 
-/* Tonearm */
 .tonearm {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 10px;
-  height: 140px;
+  top: 25px;
+  right: 25px;
+  width: 8px;
+  height: 120px;
   background: linear-gradient(90deg, #ccc, #fff, #999);
-  border-radius: 5px;
+  border-radius: 4px;
   transform-origin: top center;
   transform: rotate(25deg);
   z-index: 5;
@@ -265,10 +307,10 @@ h2.subtitle {
 
 .tonearm-base {
   position: absolute;
-  top: -15px;
-  left: -15px;
-  width: 40px;
-  height: 40px;
+  top: -12px;
+  left: -12px;
+  width: 32px;
+  height: 32px;
   background: radial-gradient(circle, #eee, #888);
   border-radius: 50%;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -276,50 +318,33 @@ h2.subtitle {
 
 .tonearm-head {
   position: absolute;
-  bottom: -10px;
-  left: -5px;
-  width: 20px;
-  height: 30px;
+  bottom: -8px;
+  left: -4px;
+  width: 16px;
+  height: 24px;
   background: #444;
   border-radius: 4px;
   transform: rotate(15deg);
 }
 
-/* Glass Card - Updated to Warm Vintage */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 2px solid var(--vintage-cream);
-  border-radius: 24px;
-  padding: 2.5rem;
-  box-shadow: 
-    0 15px 35px rgba(0,0,0,0.2),
-    inset 0 0 0 2px var(--vintage-pink);
-  margin-bottom: 2rem;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Decorative background elements in the card */
+/* Card Decor */
 .card-decor {
   position: absolute;
-  opacity: 0.1;
+  opacity: 0.15;
   pointer-events: none;
   z-index: 0;
 }
 .decor-note {
-  font-size: 4rem;
+  font-size: 5rem;
   color: var(--vintage-pink);
 }
-.decor-note-1 { top: 10%; left: 5%; transform: rotate(-20deg); }
-.decor-note-2 { bottom: 10%; right: 5%; transform: rotate(15deg); }
+.decor-note-1 { top: 5%; left: 5%; }
+.decor-note-2 { bottom: 5%; right: 5%; }
 
 .details-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -330,6 +355,10 @@ h2.subtitle {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 2px dashed var(--vintage-cyan);
 }
 
 .detail-icon-wrapper {
@@ -340,10 +369,11 @@ h2.subtitle {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px dashed var(--vintage-cream);
-  box-shadow: 3px 3px 0px var(--vintage-pink);
+  border: 3px solid var(--vintage-cream);
+  box-shadow: 4px 4px 0px var(--vintage-pink);
   color: var(--vintage-cream);
-  transform: rotate(-5deg);
+  margin-bottom: 0.5rem;
+  /* Removed rotation for symmetry */
 }
 
 .detail-icon-wrapper svg {
@@ -354,7 +384,7 @@ h2.subtitle {
 .detail-title {
   font-family: 'Rye', cursive;
   color: var(--vintage-pink);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-shadow: 1px 1px 0px #000;
 }
 
@@ -371,6 +401,10 @@ h2.subtitle {
   gap: 1.5rem;
   position: relative;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid var(--vintage-mint);
 }
 
 .form-group {
@@ -382,7 +416,7 @@ h2.subtitle {
 .form-group label {
   font-weight: 700;
   color: var(--vintage-cyan);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
 }
 
@@ -391,10 +425,10 @@ h2.subtitle {
   padding: 1rem;
   border-radius: 8px;
   border: 2px solid var(--vintage-mint);
-  background: var(--vintage-cream);
+  background: #fff;
   color: var(--vintage-text);
   font-family: 'Outfit', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   outline: none;
   transition: all 0.3s;
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
@@ -403,17 +437,17 @@ h2.subtitle {
 .form-group input:focus,
 .form-group select:focus {
   border-color: var(--vintage-pink);
-  box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.4);
+  box-shadow: 0 0 0 4px rgba(255, 182, 193, 0.4);
 }
 
 .submit-btn {
-  padding: 1rem 2rem;
+  padding: 1.2rem 2rem;
   border: none;
   border-radius: 50px;
   background: var(--vintage-pink);
   color: #fff;
   font-family: 'Rye', cursive;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   cursor: pointer;
   letter-spacing: 2px;
   transition: all 0.2s;
@@ -442,7 +476,45 @@ h2.subtitle {
   box-shadow: none;
 }
 
-/* Audio Player */
+/* Enter Party Overlay */
+.party-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: white;
+}
+.party-overlay h1 {
+  font-family: 'Bungee Shade', cursive;
+  color: var(--vintage-yellow);
+  text-shadow: 4px 4px 0px var(--vintage-pink);
+  text-align: center;
+  font-size: 3rem;
+  padding: 0 1rem;
+}
+.enter-btn {
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  font-family: 'Rye', cursive;
+  background: var(--vintage-cyan);
+  color: white;
+  border: 4px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 206, 209, 0.8);
+  transition: transform 0.2s;
+  animation: pulse-btn 1.5s infinite alternate;
+}
+
+/* Audio Player Control */
 .audio-control {
   position: fixed;
   bottom: 2rem;
@@ -462,7 +534,22 @@ h2.subtitle {
 }
 
 .audio-control:hover {
-  transform: scale(1.1) rotate(10deg);
+  transform: scale(1.1);
+}
+
+.audio-hint {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 6rem;
+  background: rgba(255,255,255,0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--vintage-pink);
+  border: 2px solid var(--vintage-cyan);
+  z-index: 99;
+  animation: bounce-left 2s infinite;
 }
 
 /* Animations */
@@ -475,22 +562,47 @@ h2.subtitle {
   100% { transform: translateX(-50%) rotate(5deg); }
 }
 
+@keyframes pulse-btn {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 206, 209, 0.5); }
+  100% { transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 206, 209, 1); }
+}
+
+@keyframes bounce-left {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10px); }
+}
+
 /* Responsive */
 @media (max-width: 600px) {
-  .glass-card {
+  .app-container {
+    padding: 1rem;
+    gap: 2rem;
+  }
+  
+  section.glass-card {
     padding: 1.5rem;
+    border-width: 3px;
   }
   
   .details-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   h1.title {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .turntable-container {
-    transform: scale(0.8);
-    margin-bottom: 2rem;
+    transform: scale(0.85);
+    margin-bottom: 1rem;
+  }
+  
+  .rsvp-form {
+    padding: 1rem;
+  }
+  
+  .audio-hint {
+    display: none; /* Hide on mobile to save space */
   }
 }
