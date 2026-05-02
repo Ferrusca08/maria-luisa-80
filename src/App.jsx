@@ -111,10 +111,6 @@ function App() {
           <h2 className="subtitle">CUMPLE 80 AÑOS</h2>
           
           <div className="turntable-container">
-            <div className="suspended-mic">
-              <div className="mic-cable"></div>
-              <div className="mic-head"></div>
-            </div>
             
             <div className="turntable-platter">
               <div className={`vinyl-grooves ${!isPlaying ? 'paused' : ''}`}></div>
